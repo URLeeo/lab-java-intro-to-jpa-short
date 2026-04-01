@@ -1,4 +1,5 @@
 package org.example.introtojpa.Entities;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,19 +10,9 @@ public class FlightBooking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer bookingId;
 
-    @Column(nullable = false)
     private Integer customerId;
 
-    @Column(nullable = false)
     private Integer flightId;
-
-    @ManyToOne
-    @JoinColumn(name = "customerId", referencedColumnName = "customerId", insertable = false, updatable = false)
-    private Customer customer;
-
-    @ManyToOne
-    @JoinColumn(name = "flightId", referencedColumnName = "flightId", insertable = false, updatable = false)
-    private Flight flight;
 
     public FlightBooking() {
     }
@@ -53,21 +44,5 @@ public class FlightBooking {
 
     public void setFlightId(Integer flightId) {
         this.flightId = flightId;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public void setFlight(Flight flight) {
-        this.flight = flight;
     }
 }
